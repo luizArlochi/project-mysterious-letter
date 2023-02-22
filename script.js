@@ -40,4 +40,25 @@ button.addEventListener('click', () => {
   letter.innerHTML = newLetter;
   applyRandomClasses(letter);
   textLetter.value = letterContent;
+
+  const spans = document.querySelectorAll('span');
+  spans.forEach((span) => {
+    span.addEventListener('click', handleSpanClick);
+  });
+
+  const wordCount = words.length;
+  const contador = document.getElementById('carta-contador');
+  contador.innerText = wordCount;
 });
+
+function handleSpanClick() {
+  const randomStyleClass = getRandomClass('style');
+  const randomSizeClass = getRandomClass('size');
+  const randomRotateClass = getRandomClass('rotate');
+  const randomSkewClass = getRandomClass('skew');
+
+  const classes = [randomStyleClass, randomSizeClass, randomRotateClass, randomSkewClass];
+  const classString = classes.join(' ');
+
+  this.className = classString;
+}
