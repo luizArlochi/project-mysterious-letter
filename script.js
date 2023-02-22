@@ -28,27 +28,23 @@ function applyRandomClasses(element) {
 
 button.addEventListener('click', () => {
   const letterContent = textLetter.value.trim();
-
   if (letterContent === '') {
     letter.innerHTML = 'Por favor, digite o conteúdo da carta.';
     textLetter.focus();
     return;
   }
-
   const words = letterContent.split(' ');
   const newLetter = words.map((word) => `<span>${word.trim()}</span>`).join(' ');
   letter.innerHTML = newLetter;
   applyRandomClasses(letter);
   textLetter.value = letterContent;
-
   const spans = document.querySelectorAll('span');
   spans.forEach((span) => {
     span.addEventListener('click', handleSpanClick);
   });
-
   const wordCount = words.length;
-  const contador = document.getElementById('carta-contador');
-  contador.innerText = wordCount;
+  const counter = document.getElementById('carta-contador');
+  counter.innerText = wordCount;
 });
 
 function handleSpanClick() {
